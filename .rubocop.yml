@@ -1,6 +1,9 @@
 Rails:
   Enabled: true
 
+AllCops:
+  TargetRubyVersion: 2.1
+
 Metrics/LineLength:
   Max: 140
 
@@ -31,6 +34,10 @@ Style/Documentation:
   Enabled: false
 
 Rails/HttpPositionalArguments:
+  Enabled: false
+
+# Only use it if Redmine switched to Rails 5
+Rails/ApplicationRecord:
   Enabled: false
 
 Metrics/BlockLength:

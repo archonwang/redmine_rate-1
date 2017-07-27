@@ -1,3 +1,16 @@
+require 'simplecov'
+require 'simplecov-rcov'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::RcovFormatter
+]
+
+SimpleCov.start :rails do
+  add_filter 'init.rb'
+  root File.expand_path(File.dirname(__FILE__) + '/..')
+end
+
 require_relative '../../../test/test_helper'
 require_relative '../../../test/object_helpers'
 require_relative 'object_helpers'

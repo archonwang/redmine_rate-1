@@ -1,18 +1,18 @@
 module RedmineRate
   module Helpers
     def rate_last_caching_run
-      if Setting.plugin_redmine_rate[:last_caching_run].present? &&
-         Setting.plugin_redmine_rate[:last_caching_run].to_date
-        format_time(Setting.plugin_redmine_rate[:last_caching_run])
+      if RedmineRate.settings[:last_caching_run].present? &&
+         RedmineRate.settings[:last_caching_run].to_date
+        format_time(RedmineRate.settings[:last_caching_run])
       else
         l(:text_no_cache_run)
       end
     end
 
     def rate_last_cache_clearing_run
-      if Setting.plugin_redmine_rate[:last_cache_clearing_run].present? &&
-         Setting.plugin_redmine_rate[:last_cache_clearing_run].to_date
-        format_time(Setting.plugin_redmine_rate[:last_cache_clearing_run])
+      if RedmineRate.settings[:last_cache_clearing_run].present? &&
+         RedmineRate.settings[:last_cache_clearing_run].to_date
+        format_time(RedmineRate.settings[:last_cache_clearing_run])
       else
         l(:text_no_cache_run)
       end
@@ -89,7 +89,7 @@ module RedmineRate
     def show_number_with_currency(num)
       locale = User.current.language if User.current.language.present?
       locale ||= Setting.default_language
-      number_to_currency(num, unit: currency_name(true), locale: locale)
+      number_to_currency(num, unit: currency_name(true), locale: locale, precision: 2)
     end
   end
 end
